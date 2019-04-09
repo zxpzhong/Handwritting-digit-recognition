@@ -1,0 +1,261 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>HandWritingClass</class>
+ <widget class="QMainWindow" name="HandWritingClass">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>592</width>
+    <height>548</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>PR18-手写数字识别</string>
+  </property>
+  <widget class="QWidget" name="centralWidget">
+   <widget class="QSplitter" name="splitter_2">
+    <property name="geometry">
+     <rect>
+      <x>10</x>
+      <y>50</y>
+      <width>581</width>
+      <height>16</height>
+     </rect>
+    </property>
+    <property name="orientation">
+     <enum>Qt::Horizontal</enum>
+    </property>
+    <widget class="QLabel" name="label">
+     <property name="text">
+      <string>手写输入:</string>
+     </property>
+    </widget>
+    <widget class="QLabel" name="label_2">
+     <property name="text">
+      <string>特征输出:</string>
+     </property>
+    </widget>
+   </widget>
+   <widget class="QWidget" name="layoutWidget">
+    <property name="geometry">
+     <rect>
+      <x>10</x>
+      <y>0</y>
+      <width>571</width>
+      <height>41</height>
+     </rect>
+    </property>
+    <layout class="QHBoxLayout" name="horizontalLayout_3">
+     <item>
+      <layout class="QHBoxLayout" name="horizontalLayout">
+       <item>
+        <widget class="QPushButton" name="Clear_Btn">
+         <property name="text">
+          <string>清除</string>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="QPushButton" name="Get_Feature_Btn">
+         <property name="text">
+          <string>获取特征</string>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="QSplitter" name="splitter">
+         <property name="orientation">
+          <enum>Qt::Vertical</enum>
+         </property>
+         <widget class="QRadioButton" name="Min_ER">
+          <property name="text">
+           <string>最小错误率分类</string>
+          </property>
+          <property name="checked">
+           <bool>true</bool>
+          </property>
+         </widget>
+         <widget class="QRadioButton" name="Min_Cost">
+          <property name="text">
+           <string>最小损失分类</string>
+          </property>
+          <property name="checkable">
+           <bool>false</bool>
+          </property>
+         </widget>
+        </widget>
+       </item>
+       <item>
+        <widget class="QPushButton" name="Cal_Score_Btn">
+         <property name="text">
+          <string>计算分数</string>
+         </property>
+        </widget>
+       </item>
+      </layout>
+     </item>
+     <item>
+      <widget class="QLabel" name="output_label">
+       <property name="text">
+        <string>识别结果：</string>
+       </property>
+      </widget>
+     </item>
+    </layout>
+   </widget>
+   <widget class="QPlainTextEdit" name="debug">
+    <property name="geometry">
+     <rect>
+      <x>10</x>
+      <y>350</y>
+      <width>571</width>
+      <height>141</height>
+     </rect>
+    </property>
+    <property name="readOnly">
+     <bool>true</bool>
+    </property>
+   </widget>
+   <widget class="QWidget" name="layoutWidget">
+    <property name="geometry">
+     <rect>
+      <x>10</x>
+      <y>70</y>
+      <width>571</width>
+      <height>281</height>
+     </rect>
+    </property>
+    <layout class="QVBoxLayout" name="verticalLayout">
+     <item>
+      <layout class="QHBoxLayout" name="horizontalLayout_2">
+       <item>
+        <widget class="QWidget" name="input" native="true">
+         <property name="autoFillBackground">
+          <bool>false</bool>
+         </property>
+         <property name="styleSheet">
+          <string notr="true">QWidget{background-color:white;border-color: rgb(255, 0, 0);}</string>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="QWidget" name="feature" native="true">
+         <property name="styleSheet">
+          <string notr="true">QWidget{background-color:white;border-color: rgb(255, 0, 0);}</string>
+         </property>
+        </widget>
+       </item>
+      </layout>
+     </item>
+     <item>
+      <widget class="Line" name="line">
+       <property name="orientation">
+        <enum>Qt::Horizontal</enum>
+       </property>
+      </widget>
+     </item>
+    </layout>
+   </widget>
+  </widget>
+  <widget class="QMenuBar" name="menuBar">
+   <property name="geometry">
+    <rect>
+     <x>0</x>
+     <y>0</y>
+     <width>592</width>
+     <height>23</height>
+    </rect>
+   </property>
+   <widget class="QMenu" name="menu">
+    <property name="title">
+     <string>菜单</string>
+    </property>
+    <addaction name="about"/>
+   </widget>
+   <addaction name="menu"/>
+  </widget>
+  <widget class="QToolBar" name="mainToolBar">
+   <attribute name="toolBarArea">
+    <enum>TopToolBarArea</enum>
+   </attribute>
+   <attribute name="toolBarBreak">
+    <bool>false</bool>
+   </attribute>
+  </widget>
+  <widget class="QStatusBar" name="statusBar"/>
+  <action name="actionabout">
+   <property name="enabled">
+    <bool>true</bool>
+   </property>
+   <property name="text">
+    <string>关于</string>
+   </property>
+  </action>
+  <action name="about">
+   <property name="text">
+    <string>关于</string>
+   </property>
+  </action>
+ </widget>
+ <layoutdefault spacing="6" margin="11"/>
+ <resources>
+  <include location="HandWriting.qrc"/>
+ </resources>
+ <connections>
+  <connection>
+   <sender>Clear_Btn</sender>
+   <signal>clicked()</signal>
+   <receiver>HandWritingClass</receiver>
+   <slot>Clear_Btn_click()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>49</x>
+     <y>51</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>63</x>
+     <y>80</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>Get_Feature_Btn</sender>
+   <signal>clicked()</signal>
+   <receiver>HandWritingClass</receiver>
+   <slot>Get_Feature_Btn_click()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>120</x>
+     <y>51</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>147</x>
+     <y>37</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>Cal_Score_Btn</sender>
+   <signal>clicked()</signal>
+   <receiver>HandWritingClass</receiver>
+   <slot>Cal_Score_Btn_click()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>326</x>
+     <y>56</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>339</x>
+     <y>73</y>
+    </hint>
+   </hints>
+  </connection>
+ </connections>
+ <slots>
+  <slot>Clear_Btn_click()</slot>
+  <slot>Get_Feature_Btn_click()</slot>
+  <slot>Cal_Score_Btn_click()</slot>
+  <slot>about()</slot>
+ </slots>
+</ui>
