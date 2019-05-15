@@ -36,6 +36,9 @@
     <ClCompile Include="HandWriting.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="Algo.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <QtMoc Include="HandWriting.h">
@@ -51,5 +54,10 @@
     <QtRcc Include="HandWriting.qrc">
       <Filter>Resource Files</Filter>
     </QtRcc>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="Algo.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>

@@ -172,27 +172,62 @@ void HandWriting::Cal_Score_Btn_click()
             tmp += "  ";
         }
         print(tmp);
-        //求分数
-        vector<double>score = algo.min_error_bayes(feature);
-        //4.2 debug输出feature vector
-        QString tmp2;
-        tmp2 += QStringLiteral("各类分数为："); // | tmp2 += QStringLiteral("Clasification Score is :");
-        for (int col = 0; col < CATEGORY; col++)
+        //检查方法按钮选中情况
+        int algo_status = 0;
+        if (ui.Min_ER->isChecked())
+            algo_status = 1;
+        if (ui.Fisher->isChecked())
+            algo_status = 2;
+        //执行不同的算法
+        if (algo_status == 1)
         {
-            tmp2 += QString::number(score[col]);
-            tmp2 += "  ";
+            print(QStringLiteral("使用最小错误率算法"));
+            //求分数
+            vector<double>score = algo.min_error_bayes(feature);
+            //4.2 debug输出feature vector
+            QString tmp2;
+            tmp2 += QStringLiteral("各类分数为："); // | tmp2 += QStringLiteral("Clasification Score is :");
+            for (int col = 0; col < CATEGORY; col++)
+            {
+                tmp2 += QString::number(score[col]);
+                tmp2 += "  ";
+            }
+            print(tmp2);
+            //求最大索引
+            std::vector<double>::iterator biggest = std::max_element(std::begin(score), std::end(score));
+            //std::cout << "Max element is " << *biggest << " at position " << std::distance(std::begin(score), biggest) << std::endl;
+            QString tmp3;
+            tmp3 += QStringLiteral("判别结果为："); // | tmp3 += QStringLiteral("Clasification is :");
+            tmp3 += QString::number(std::distance(std::begin(score), biggest));
+            tmp3 += QStringLiteral("置信度为："); // | tmp3 += QStringLiteral("Probability is :");
+            tmp3 += QString::number(*biggest);
+            print(tmp3);
+            ui.output_label->setText(tmp3);
         }
-        print(tmp2);
-        //求最大索引
-        std::vector<double>::iterator biggest = std::max_element(std::begin(score), std::end(score));
-        //std::cout << "Max element is " << *biggest << " at position " << std::distance(std::begin(score), biggest) << std::endl;
-        QString tmp3;
-        tmp3 += QStringLiteral("判别结果为："); // | tmp3 += QStringLiteral("Clasification is :");
-        tmp3 += QString::number(std::distance(std::begin(score), biggest));
-        tmp3 += QStringLiteral("置信度为："); // | tmp3 += QStringLiteral("Probability is :");
-        tmp3 += QString::number(*biggest);
-        print(tmp3);
-        ui.output_label->setText(tmp3);
+        else if (algo_status == 2)
+        {
+            print(QStringLiteral("使用Fisher算法"));
+            vector<float> score = algo.fisher(feature);
+            QString tmp;
+            tmp += QStringLiteral("判别结果为:"); // | tmp3 += QStringLiteral("Probability is :");
+            for (int i = 0; i < score.size(); i++)
+            {
+                tmp += QString::number(score[i]);
+                tmp += "  ";
+            }
+            print(tmp);
+
+            //求最大索引
+            std::vector<float>::iterator biggest = std::max_element(std::begin(score), std::end(score));
+            //std::cout << "Max element is " << *biggest << " at position " << std::distance(std::begin(score), biggest) << std::endl;
+            QString tmp3;
+            tmp3 += QStringLiteral("判别结果为："); // | tmp3 += QStringLiteral("Clasification is :");
+            tmp3 += QString::number(std::distance(std::begin(score), biggest));
+            tmp3 += QStringLiteral("分类边界距离百分比："); // | tmp3 += QStringLiteral("Probability is :");
+            tmp3 += QString::number(*biggest);
+            print(tmp3);
+            ui.output_label->setText(tmp3);
+        }
     }
     else
         print("input error");

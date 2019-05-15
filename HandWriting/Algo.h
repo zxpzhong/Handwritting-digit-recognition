@@ -5,9 +5,10 @@
 #include <opencv2/highgui/highgui.hpp>
 #include <QDebug>
 #include <string>
+#include <Dense>
 using namespace cv;
 using namespace std;
-
+using namespace Eigen;
 #define FEATURE_DIM 100
 #define CATEGORY 10
 #define SAMPLE 20
@@ -15,6 +16,7 @@ using namespace std;
 class Algo {
 public:
     Algo();
+    vector<float> fisher(vector<int> feature);
     vector<int> get_feature(Mat img);
     vector<vector<double>> category_condition_probability; //10*100   每一类下，每张图片对应的，每一个特征属于该类的概率 | category Conditional probability under every categrory
     vector<double> min_error_bayes(vector<int> feature);

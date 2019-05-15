@@ -76,12 +76,12 @@
            <bool>true</bool>
           </property>
          </widget>
-         <widget class="QRadioButton" name="Min_Cost">
+         <widget class="QRadioButton" name="Fisher">
           <property name="text">
-           <string>最小损失分类</string>
+           <string>Fisher线性判别</string>
           </property>
           <property name="checkable">
-           <bool>false</bool>
+           <bool>true</bool>
           </property>
          </widget>
         </widget>

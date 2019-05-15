@@ -2,7 +2,8 @@
 
 ----------
 
-基于**最小错误率**贝叶斯的QT/C++手写字符识别系统| QT/C++ implement of Handwritting digit recognition using minimum error rate bayes
+基于**最小错误率**和**Fisher线性分类器**的QT/C++手写字符识别系统
+QT/C++ implement of Handwritting digit recognition using minimum error rate bayes
 
 ## Enviroment
  - `PC`:WIN10 64bit
