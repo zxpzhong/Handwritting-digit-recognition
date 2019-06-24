@@ -18,7 +18,12 @@
 #include <QDebug>
 #include <QTextEdit>
 #include <QMessageBox>
+#include <qtimer.h>
 #include "Algo.h"
+
+#include <opencv2/core/core.hpp>  
+#include <opencv2/imgproc/imgproc.hpp>  
+#include <opencv2/highgui/highgui.hpp>  
 
 class HandWriting : public QMainWindow
 {
@@ -26,6 +31,7 @@ class HandWriting : public QMainWindow
 
 public:
     HandWriting(QWidget *parent = Q_NULLPTR);
+    ~HandWriting();
     void print(QString s);
 
     Ui::HandWritingClass ui;
@@ -39,6 +45,13 @@ public:
     bool m_bValidDraw;  //有效绘画
     bool m_bStart;      //True 开始绘制 False 结束绘制
 
+    //opencv摄像头句柄
+    VideoCapture *cam;
+    //储存图像
+    Mat input_img;
+    //摄像头刷新定时器
+    QTimer* timer;
+   
     bool eventFilter(QObject *watched, QEvent * event);
     //void customMessageHandler(QtMsgType type, const QMessageLogContext &, const QString & str);
 
@@ -50,6 +63,7 @@ public:
     void drawUserDraw(QPainter&);           //用户绘制
     
     void Painter();
+
 public slots:
     //清除按钮
 	void Clear_Btn_click();
@@ -58,4 +72,6 @@ public slots:
     //计算分数按钮
     void Cal_Score_Btn_click();
     void about_msg();
+
+    int get_frame();
 };

@@ -22,8 +22,77 @@ HandWriting::HandWriting(QWidget *parent)
     ui.input->installEventFilter(this);
     //重定向qdebug | redirect the qdebug to file
     qInstallMessageHandler(customMessageHandler);
+    //为摄像头与手写切换定义槽函数，如果切换回手写，显示部分为手写；如果切换回视频，则显示接入视频
+    timer = new QTimer(this);
+    //若当前时间超时，过了1000ms，更新m_pzEffectWidget窗口
+    connect(timer, SIGNAL(timeout()), this, SLOT(get_frame()));
+    timer->start(33.33);
 
+    ////程序关闭槽函数
+    //connect(quitButton, SIGNAL(clicked()), qApp, SLOT(quit()));
+
+    //cam = new cv::VideoCapture(0);
+    //cam->read(input_img);
+    //cv::imshow("cam", input_img);
+    cam = new cv::VideoCapture(0);
+    if (!cam->isOpened())
+    {
+        QMessageBox::information(NULL, "Error", "No video device found!", QMessageBox::Yes, QMessageBox::Yes);
+        exit(-1);
+    }
+    QApplication::setQuitOnLastWindowClosed(false);
+    setAttribute(Qt::WA_DeleteOnClose);
 }
+HandWriting::~HandWriting()
+{
+    
+    timer->stop();
+    cv::destroyAllWindows();
+    cam->release();
+    exit(-1);
+}
+QImage Mat2QImage(cv::Mat const& src)
+{
+    cv::Mat temp; // make the same cv::Mat  
+    cvtColor(src, temp, CV_BGR2RGB); // cvtColor Makes a copt, that what i need  
+    QImage dest((const uchar *)temp.data, temp.cols, temp.rows, temp.step, QImage::Format_RGB888); //temp.setp()没有时，会导致有些图片在转换后倾斜 
+    dest.bits(); // enforce deep copy, see documentation  
+                 // of QImage::QImage ( const uchar * data, int width, int height, Format format )  
+    return dest;
+}
+
+int HandWriting::get_frame()
+{
+    //1.0 检查按钮状态
+    if (ui.Write_input->isChecked() && ! ui.Video_input->isChecked())
+        //2.0 如果是手写输入，则检查摄像头是否打开，如果是，则关闭
+    {
+            cv::destroyAllWindows();
+    }
+    if (!ui.Write_input->isChecked() && ui.Video_input->isChecked())
+        //3.0 如果是视频输入，则检查摄像头是否关闭，如果是，则打开，否则则采集图像到input_img中
+    {
+        if ( !cam->isOpened())
+        {
+            QMessageBox::information(NULL, "Error", "No video device found!", QMessageBox::Yes, QMessageBox::Yes);
+            exit(-1);
+        }
+        else
+        {
+            cam->read(input_img);
+            cv::imshow("cam",input_img);
+            //ui.input->
+            //QPainter painter(ui.input);
+            //painter.drawImage(640, 480, Mat2QImage(input_img));
+            //QPainter painter;
+            //painter.begin(ui.input);
+            //painter.drawImage(QPoint(0, 0), Mat2QImage(input_img));
+        }
+    }
+    //print("get_frame");
+    return 0;
+}
+
 /*print函数定义 | print fun definition*/ 
 void HandWriting::print(QString s)
 {
@@ -155,11 +224,19 @@ void HandWriting::Cal_Score_Btn_click()
 {
     print("----------------------------------------------------");
     print("Cal_Score_Btn_click");
-    QPixmap pix = QPixmap::grabWidget(ui.input);
-    //pix.save("2.jpg");
-    //Mat src = cv::imread("2.jpg");
-    QImage img = pix.toImage();
-    Mat src = QImage2Mat(img);
+    Mat src;
+    if (ui.Write_input->isChecked() && !ui.Video_input->isChecked())
+        //2.0 如果是手写输入，则检查摄像头是否打开，如果是，则关闭
+    {
+        QPixmap pix = QPixmap::grabWidget(ui.input);
+        QImage img = pix.toImage();
+        src = QImage2Mat(img);
+    }
+    if (!ui.Write_input->isChecked() && ui.Video_input->isChecked())
+        //3.0 如果是视频输入，则检查摄像头是否关闭，如果是，则打开，否则则采集图像到input_img中
+    {
+        src = input_img;
+    }
     vector<int>feature = algo.get_feature(src);
     if (feature.size() != 0)
     {

@@ -1,0 +1,24 @@
+﻿生成启动时间为 2019/6/24 15:45:03。
+     1>项目“E:\研究生课程\研一下\模式识别\HandWriting\HandWriting\HandWriting.vcxproj”在节点 2 上(Build 个目标)。
+     1>QtRccSetDependencies:
+         "D:\Qt\Qt5.9.3\5.9.3\msvc2015_64\bin\rcc.exe" --list "HandWriting.qrc" > "x64\Debug\rcc_list.txt" 2> nul
+       ClCompile:
+         D:\VS2015\VC\bin\x86_amd64\CL.exe /c /I"F:\finger vein\18-10-1before\Eigen" /ID:\opencv3.2\opencv\mybuild\lib\Release /ID:\opencv3.2\opencv\build\x64\vc14 /ID:\opencv3.2\opencv\build\include\opencv2 /ID:\opencv3.2\opencv\build\include\opencv /ID:\opencv3.2\opencv\build\include /I.\GeneratedFiles /I. /ID:\Qt\Qt5.9.3\5.9.3\msvc2015_64\include /I.\GeneratedFiles\Debug /ID:\Qt\Qt5.9.3\5.9.3\msvc2015_64\include\QtCore /ID:\Qt\Qt5.9.3\5.9.3\msvc2015_64\include\QtGui /ID:\Qt\Qt5.9.3\5.9.3\msvc2015_64\include\QtANGLE /ID:\Qt\Qt5.9.3\5.9.3\msvc2015_64\include\QtWidgets /Zi /nologo /W1 /WX- /MP /Od /D UNICODE /D _UNICODE /D WIN32 /D WIN64 /D QT_DLL /D QT_CORE_LIB /D QT_GUI_LIB /D QT_WIDGETS_LIB /Gm- /EHsc /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Zc:inline /Fo"x64\Debug\\" /Fd"x64\Debug\vc140.pdb" /Gd /TP /errorReport:prompt HandWriting.cpp
+         HandWriting.cpp
+     1>D:\opencv3.2\opencv\build\include\opencv2/core/mat.hpp(2586): warning C4819: 该文件包含不能在当前代码页(936)中表示的字符。请将该文件保存为 Unicode 格式以防止数据丢失
+     1>D:\opencv3.2\opencv\build\include\opencv2/core/persistence.hpp : warning C4819: 该文件包含不能在当前代码页(936)中表示的字符。请将该文件保存为 Unicode 格式以防止数据丢失
+     1>D:\opencv3.2\opencv\build\include\opencv2/core/utility.hpp : warning C4819: 该文件包含不能在当前代码页(936)中表示的字符。请将该文件保存为 Unicode 格式以防止数据丢失
+     1>D:\opencv3.2\opencv\build\include\opencv2/core/utility.hpp : warning C4819: 该文件包含不能在当前代码页(936)中表示的字符。请将该文件保存为 Unicode 格式以防止数据丢失
+     1>D:\opencv3.2\opencv\build\include\opencv2/imgproc.hpp(592): warning C4819: 该文件包含不能在当前代码页(936)中表示的字符。请将该文件保存为 Unicode 格式以防止数据丢失
+       Link:
+         D:\VS2015\VC\bin\x86_amd64\link.exe /ERRORREPORT:PROMPT /OUT:"E:\研究生课程\研一下\模式识别\HandWriting\x64\Debug\\HandWriting.exe" /NOLOGO /LIBPATH:D:\opencv3.2\opencv\mybuild\lib\release /LIBPATH:D:\opencv3.2\opencv\build\x64\vc14\lib /LIBPATH:D:\Qt\Qt5.9.3\5.9.3\msvc2015_64\lib D:\opencv3.2\opencv\build\x64\vc14\lib\opencv_world320.lib D:\opencv3.2\opencv\mybuild\lib\release\opencv_calib3d320.lib D:\opencv3.2\opencv\mybuild\lib\release\opencv_core320.lib D:\opencv3.2\opencv\mybuild\lib\release\opencv_features2d320.lib D:\opencv3.2\opencv\mybuild\lib\release\opencv_flann320.lib D:\opencv3.2\opencv\mybuild\lib\release\opencv_highgui320.lib D:\opencv3.2\opencv\mybuild\lib\release\opencv_imgcodecs320.lib D:\opencv3.2\opencv\mybuild\lib\release\opencv_imgproc320.lib D:\opencv3.2\opencv\mybuild\lib\release\opencv_ml320.lib D:\opencv3.2\opencv\mybuild\lib\release\opencv_objdetect320.lib D:\opencv3.2\opencv\mybuild\lib\release\opencv_photo320.lib D:\opencv3.2\opencv\mybuild\lib\release\opencv_shape320.lib D:\opencv3.2\opencv\mybuild\lib\release\opencv_stitching320.lib D:\opencv3.2\opencv\mybuild\lib\release\opencv_superres320.lib D:\opencv3.2\opencv\mybuild\lib\release\opencv_ts320.lib D:\opencv3.2\opencv\mybuild\lib\release\opencv_video320.lib D:\opencv3.2\opencv\mybuild\lib\release\opencv_videoio320.lib D:\opencv3.2\opencv\mybuild\lib\release\opencv_videostab320.lib qtmaind.lib Qt5Cored.lib Qt5Guid.lib Qt5Widgetsd.lib kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /Debug /PDB:"E:\研究生课程\研一下\模式识别\HandWriting\x64\Debug\HandWriting.pdb" /SUBSYSTEM:WINDOWS /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"E:\研究生课程\研一下\模式识别\HandWriting\x64\Debug\HandWriting.lib" /MACHINE:X64 x64\Debug\Algo.obj
+         x64\Debug\HandWriting.obj
+         x64\Debug\main.obj
+         x64\Debug\qrc_HandWriting.obj
+         x64\Debug\moc_HandWriting.obj
+         HandWriting.vcxproj -> E:\研究生课程\研一下\模式识别\HandWriting\x64\Debug\HandWriting.exe
+     1>已完成生成项目“E:\研究生课程\研一下\模式识别\HandWriting\HandWriting\HandWriting.vcxproj”(Build 个目标)的操作。
+
+已成功生成。
+
+已用时间 00:00:03.64

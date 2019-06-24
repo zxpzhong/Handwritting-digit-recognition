@@ -6,6 +6,10 @@
 
 QT/C++ implement of Handwritting digit recognition using minimum error rate bayes & Fisher linear classifier
 
+## Support input
+ - Hand write(By mouse)
+ - Video(USB driverless camera)
+
 ## Enviroment
  - `PC`:WIN10 64bit
  - `IDE`:Visual Studio 15
@@ -24,3 +28,6 @@ QT/C++ implement of Handwritting digit recognition using minimum error rate baye
      - `HandWriting.h`:QT framework header
      - `HandWriting.ui`:QT GUI file
      - `main.cpp`:QT enter point of main process
+ - `Fisher`:
+     - `fisher.py`:fisher linear classifier in python
+

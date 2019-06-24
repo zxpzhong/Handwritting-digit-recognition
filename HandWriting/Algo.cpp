@@ -5,7 +5,7 @@ void debug_imshow(char * name, Mat img)
 {
 #ifdef DEBUG
     imshow(name, img);
-    waitKey(0);
+    //waitKey(0);
 #endif
 }
 /*
@@ -51,7 +51,7 @@ vector<int> Algo::get_feature(Mat img)
     //0. 转灰度图 | convert it to gray
     cv::cvtColor(img, img, cv::COLOR_RGB2GRAY);
     //1. 对图像二值化，确保是二值图像 | convert to bin img
-    cv::threshold(img, img, 128, 255, cv::THRESH_BINARY);
+    cv::threshold(img, img, 60, 255, cv::THRESH_BINARY);
     debug_imshow("bin", img);
 
     int min_col = img.cols;
